@@ -4,9 +4,17 @@
     box-sizing: border-box;
 }
 
+body{
+    font-family: sans-serif;
+}
+
 main{
-    max-width: 1170px;
-    margin: auto;
+    
     background-color: #d48f38;
     padding: 20px 0px;
+}
+
+.d-flex{
+    display: flex;
+    flex-wrap: wrap;
 }
