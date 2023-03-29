@@ -1,6 +1,16 @@
 <script>
+import { store } from '../store.js'
+import Card from './Card.vue'
 export default{
-    name: 'CardList'
+    name: 'CardList',
+    data(){
+        return{
+            store
+        }
+    },
+    components:{
+        Card
+    }
 }
 </script>
 
@@ -9,7 +19,13 @@ export default{
         <div class="container-s">
             <div class="result">Hai trovato ...</div>
             <div class="list d-flex">
-                <div class="card"></div>
+                <div class="card"  v-for="(card, index) in store.cardsList" :key="index">
+                    <Card  
+                    :image="card.card_images[0].image_url"
+                    :name="card.name"
+                    :archetype="card.archetype"
+                />                  
+                </div>
             </div>
         </div>
         
@@ -29,6 +45,11 @@ export default{
                 background-color: #212529;
                 padding: 20px 0px;
                 color: white;
+            }
+            .card{
+                width: calc(100% / 5 - 10px);
+                margin: 10px 5px;
+                
             }
         }
     }
