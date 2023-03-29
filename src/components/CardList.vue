@@ -17,7 +17,7 @@ export default{
 <template>
     <div class="container">
         <div class="container-s">
-            <div class="result">Hai trovato ...</div>
+            <div class="result">Hai trovato {{store.cardsList.length}} carte</div>
             <div class="list d-flex">
                 <div class="card"  v-for="(card, index) in store.cardsList" :key="index">
                     <Card  
