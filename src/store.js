@@ -3,7 +3,8 @@ import { reactive } from 'vue';
 export const store = reactive(
     {
         cardsList: [],
-        loading: true
-       
+        loading: true,
+        search: '',
+        archetypeCard: ''
     }
 );

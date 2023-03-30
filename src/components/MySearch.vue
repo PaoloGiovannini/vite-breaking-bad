@@ -1,13 +1,21 @@
 <script>
+import { store } from '../store.js';
 export default{
-    name: 'MySearch'
+    name: 'MySearch',
+    data(){
+        return{
+            store,
+        }
+    }
 }
 </script>
 
 <template>
     <div class="search">
-        <select name="" id="">
-            <option value="Alien">Alien</option>
+        <select @change="$emit('doChange')" v-model="store.search">
+            <option value="" disabled selected>Select your option</option>
+            <option v-for="archetype in store.archetypeCard" :value = archetype.archetype_name>{{ archetype.archetype_name }}</option>
+            
         </select>
     </div>
     

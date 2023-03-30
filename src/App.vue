@@ -19,16 +19,28 @@
       }
     },
     methods: {
+      GetArchetype(){
+        axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php')
+        .then(response => {
+          this.store.archetypeCard = response.data;
+          this.store.loading = false;
+        });
+      },
       getCards() {
-        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=Blue-Eyes')
+        let url = ''
+        if(store.search.length > 0){
+          url += `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.search}`
+        }
+        axios.get(url)
         .then(response => {
           this.store.cardsList = response.data.data;
-          this.store.loading = false;
+          
         });
       }
     },
     created() {
       this.getCards();
+      this.GetArchetype();
     }
   }
 </script>
@@ -36,7 +48,7 @@
 <template>
   <MyHeader/>
   <main>
-    <MySearch/>
+    <MySearch @doChange="getCards"/>
     <CardList/>
   </main>
   <Loading/>
