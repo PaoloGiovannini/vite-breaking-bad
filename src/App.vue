@@ -30,12 +30,13 @@
         let url = ''
         if(store.search.length > 0){
           url += `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.search}`
+          axios.get(url)
+          .then(response => {
+            this.store.cardsList = response.data.data;
+
+          });
         }
-        axios.get(url)
-        .then(response => {
-          this.store.cardsList = response.data.data;
-          
-        });
+        
       }
     },
     created() {
