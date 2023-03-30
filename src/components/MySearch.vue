@@ -18,5 +18,11 @@ export default{
         max-width: 1170px;
         margin: auto;
         margin-bottom: 25px;
+        & select{
+            margin-left: 15px;
+            padding-right: 40px;
+            border: 8px solid white;
+            border-radius: 4px;
+        }
     }
 </style>
